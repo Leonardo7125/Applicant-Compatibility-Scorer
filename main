@@ -2,14 +2,13 @@ import json
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 
-# Define the compatibility function
 def compatibility(team, applicant):
     score = 0
     for attr in team:
         score += min(team[attr], applicant[attr]) / 10.0
     return score
 
-# Use tkinter to get the path to the input JSON file
+# Input JSON file path
 root = Tk()
 root.withdraw()
 input_file = askopenfilename(title="Select input JSON file", filetypes=[("JSON files", "*.json")])
@@ -27,7 +26,7 @@ for applicant in data['applicants']:
 # Create the output JSON data
 output_data = {'scoredApplicants': scored_applicants}
 
-# Create output file name based on input file name
+# Create output file name
 output_file = input_file.split(".")[0] + "_scores.json"
 
 
